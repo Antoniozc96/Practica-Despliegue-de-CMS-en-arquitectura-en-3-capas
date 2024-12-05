@@ -284,6 +284,7 @@ EOF
 ![WORDPRESS 6](https://github.com/user-attachments/assets/912ce064-d808-4c09-8176-86ab22d5c895)
 
 * Worpress con HTTPS
-Después de completar la configuración, ahora he creado un dominio y lo he asociado con la dirección pública del balanceador de carga. Esto significa que puedes acceder a tu sitio de WordPress de manera segura utilizando HTTPS.
+Después de completar la configuración, ahora he creado un dominio y lo he asociado con la dirección pública del balanceador de carga.
+Esto significa que puedes acceder a tu sitio de WordPress de manera segura utilizando HTTPS.
 ![Captura de pantalla 2024-12-05 173443](https://github.com/user-attachments/assets/a8eef011-c579-490d-ae27-d6a862615a90)
 
