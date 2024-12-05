@@ -119,12 +119,158 @@ Finalmente, creamos un grupo de seguridad para la instancia, especificando las r
 ## Aprovisionamientos
 ### Aprovisionamiento Balanceador
 
-1. Actualizar e instalar Apache
+1. Actualizar e instalar Apache: Actualiza la lista de paquetes e instala el servidor web Apache.
 ````
 apt update -y
 apt install -y apache2
 ````
 
+2. Habilitar módulos: Activa los módulos de proxy, proxy HTTP, balanceador y el método de balanceo por solicitudes en Apache.
+````
+a2enmod proxy
+a2enmod proxy_http
+a2enmod proxy_balancer
+a2enmod lbmethod_byrequests
+````
+3. Crear configuración del balanceador: Copia el archivo de configuración por defecto para crear uno nuevo específico para el balanceador de carga.
+````
+cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/load-balancer.conf
+````
+4. Comentar DocumentRoot: Comenta la línea DocumentRoot en el archivo de configuración del balanceador para evitar conflictos.
+````
+sed -i 's|^\(.*DocumentRoot /var/www/html\)|#\1|' /etc/apache2/sites-available/load-balancer.conf
+````
+5. Configurar balanceador de carga: Añade la configuración del proxy y los miembros del balanceador en el archivo de configuración. Define que todas las peticiones se envíen y se respondan a través del balanceador.
+````
+# Configurar el balanceador de carga
+sed -i '/<\/VirtualHost>/i \
+<Proxy balancer://mycluster>\n\
+    # Server 1\n\
+    BalancerMember http://172.50.140.33\n\
+    # Server 2\n\
+    BalancerMember http://172.50.141.148\n\
+</Proxy>\n\
+\n\
+# Todas las peticiones se enviarán al balanceador\n\
+ProxyPass / balancer://mycluster/\n\
+ProxyPassReverse / balancer://mycluster/' /etc/apache2/sites-available/load-balancer.conf
+````
+6. Activar y desactivar sitios: Activa el nuevo sitio del balanceador de carga y desactiva el sitio por defecto de Apache.
+````
+# Activar el nuevo sitio y desactivar el sitio por defecto
+a2ensite load-balancer.conf
+a2dissite 000-default.conf
+````
+7. Reiniciar Apache: Reinicia el servicio de Apache para aplicar los cambios de configuración.
+````
+systemctl restart apache2
+````
+
+# Aprovisionamiento Servidor NFS
+1. Actualizar e instalar NFS y utilidades: Actualiza la lista de paquetes disponibles e instala los paquetes necesarios: el servidor NFS, unzip, curl, PHP, el módulo PHP para MySQL y el cliente de MySQL.
+````
+apt update -y
+apt install -y nfs-kernel-server unzip curl php php-mysql mysql-client
+````
+2. Crear carpeta compartida y asignar permisos: Crea el directorio /var/nfs/shared para compartir archivos y cambia el propietario del directorio a nobody:nogroup para controlar el acceso.
+````
+mkdir -p /var/nfs/shared
+chown -R nobody:nogroup /var/nfs/shared
+````
+3. Configurar acceso desde los servidores: Agrega entradas al archivo /etc/exports para permitir el acceso al directorio compartido desde las direcciones IP 172.50.130.70 y 172.50.143.215 con permisos de lectura/escritura y sincronización (rw,sync).
+````
+# Configurar acceso desde los servidores con las nuevas IPs
+sed -i '$a /var/nfs/shared  172.50.130.70(rw,sync,no_subtree_check)' /etc/exports
+sed -i '$a /var/nfs/shared  172.50.143.215(rw,sync,no_subtree_check)' /etc/exports
+````
+4. Descargar e instalar WordPress:
+   2.1 curl -O https://wordpress.org/latest.zip: Descarga el archivo zip de WordPress desde el sitio oficial.
+   2.2 unzip -o latest.zip -d /var/nfs/shared/: Descomprime el archivo zip descargado en el directorio /var/nfs/shared/.
+   2.3 Chmod 755 -R /var/nfs/shared/: Cambia los permisos de los archivos descomprimidos a 755 para que sean legibles y ejecutables.
+   2.4 Chown -R www-data:www-data /var/nfs/shared/:* Cambia el propietario de los archivos descomprimidos a www-data, el usuario del servidor web.
+````
+curl -O https://wordpress.org/latest.zip
+unzip -o latest.zip -d /var/nfs/shared/
+chmod 755 -R /var/nfs/shared/
+chown -R www-data:www-data /var/nfs/shared/*
+````
+5. Reiniciar el servidor NFS: Reinicia el servicio NFS para aplicar todos los cambios de configuración realizados.
+````
+systemctl restart nfs-kernel-server
+````
+
+#Aprovisionamiento Servidores 1 y 2
+1. Actualizar e instalar Apache y PHP con módulos necesarios: Actualiza la lista de paquetes disponibles e instala el servidor web Apache, los módulos NFS y varios módulos PHP necesarios para ejecutar WordPress.
+````
+# Actualizar e instalar Apache y PHP con módulos necesarios
+apt update -y
+apt install -y apache2 nfs-common php libapache2-mod-php php-mysql php-curl php-gd php-xml php-mbstring php-xmlrpc php-zip php-soap
+````
+2. Habilitar el módulo rewrite: Activa el módulo rewrite de Apache, necesario para la reescritura de URLs.
+````
+a2enmod rewrite
+````
+3. Configurar el sitio web para que use la carpeta compartida de NFS: Modifica el archivo de configuración del sitio web de Apache para usar el directorio compartido de NFS como raíz del documento.
+````
+sed -i 's|DocumentRoot .*|DocumentRoot /nfs/shared/wordpress|' /etc/apache2/sites-available/000-default.conf
+````
+4. Configurar permisos del directorio: Añade una sección de configuración al archivo de Apache para establecer los permisos del directorio compartido de NFS.
+````
+# Configurar permisos del directorio
+sed -i '/<\/VirtualHost>/i \
+<Directory /nfs/shared/wordpress>\
+    Options Indexes FollowSymLinks\
+    AllowOverride All\
+    Require all granted\
+</Directory>' /etc/apache2/sites-available/000-default.conf
+````
+5. Crear configuración personalizada: Copia el archivo de configuración por defecto para crear uno nuevo específico para el sitio web.
+````
+cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/websv.conf
+````
+6. Montar la carpeta compartida desde el servidor NFS: Crea el directorio para el montaje y monta el directorio compartido desde el servidor NFS.
+````
+mkdir -p /nfs/shared mount 172.50.138.11:/var/nfs/shared /nfs/shared
+````
+7. Configurar montaje automático en /etc/fstab: Añade la configuración de montaje al archivo /etc/fstab para que el montaje se realice automáticamente en el arranque del sistema y monta todas las entradas del archivo de fstab.
+````
+echo "172.50.138.11:/var/nfs/shared /nfs/shared nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0" | sudo tee -a /etc/fstab
+mount -a
+````
+8. Desactivar el sitio por defecto y activar el nuevo sitio: Desactiva el sitio por defecto de Apache y activa el nuevo sitio configurado.
+````
+a2dissite 000-default.conf
+a2ensite websv.conf
+````
+9. Reiniciar Apache: Reinicia el servicio de Apache para aplicar los cambios de configuración.
+````
+systemctl restart apache2
+systemctl reload apache2
+````
+
+#Aprovisionamiento Server Base de datos
+1. Actualizar e instalar MySQL y PhpMyAdmin: Actualiza la lista de paquetes disponibles e instala MySQL Server y PhpMyAdmin.
+````
+apt update -y
+apt install -y mysql-server phpmyadmin
+````
+2. Configurar MySQL para conexiones remotas: Modifica el archivo de configuración de MySQL para permitir conexiones remotas desde la dirección IP 172.50.151.207
+````
+sed -i "s/^bind-address.*/bind-address = 172.50.151.207/" /etc/mysql/mysql.conf.d/mysqld.cnf
+````
+3. Reiniciar MySQL: Reinicia el servicio de MySQL para aplicar los cambios de configuración.
+````
+systemctl restart mysql
+````
+4. Crear base de datos y usuario con acceso remoto: Accede a MySQL y ejecuta los comandos para crear la base de datos db_wordpress, crear el usuario antonio con acceso desde las direcciones IP que empiezan por 172.50.%, y otorgar todos los privilegios en la base de datos db_wordpress a este usuario. Finalmente, refresca los privilegios para aplicar los cambios.
+````
+mysql <<EOF
+CREATE DATABASE db_wordpress;
+CREATE USER 'antonio'@'172.50.%' IDENTIFIED BY '1234';
+GRANT ALL PRIVILEGES ON db_wordpress.* TO 'antonio'@'172.50.%';
+FLUSH PRIVILEGES;
+EOF
+````
 
 
 
