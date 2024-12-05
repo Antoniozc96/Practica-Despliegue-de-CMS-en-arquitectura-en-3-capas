@@ -118,8 +118,9 @@ Finalmente, creamos un grupo de seguridad para la instancia, especificando las r
 
 ## Aprovisionamientos
 ### Aprovisionamiento Balanceador
+
+1. Actualizar e instalar Apache
 ````
-Actualizar e instalar Apache
 apt update -y
 apt install -y apache2
 ````
