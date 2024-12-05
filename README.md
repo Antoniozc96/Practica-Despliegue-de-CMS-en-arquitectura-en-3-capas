@@ -308,4 +308,37 @@ Esto significa que puedes acceder a tu sitio de WordPress de manera segura utili
 ![Aaasdad](https://github.com/user-attachments/assets/08e73644-6bfa-407a-a486-729f288f7f13)
 
 ![Captura de pantalla 2024-12-05 173443](https://github.com/user-attachments/assets/a8eef011-c579-490d-ae27-d6a862615a90)
+[Uploading Clave3capas.pem…-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEA0/i8sBBfIBBe/8Fzanw604mka//v1MrojOIXoy1IbtIpOt7p
+/+ONKN3WkAkbNXFR25rMnxWKMugaYCNGbIR0sCL+Y1fhXGW8MgnaKNFB91PjMbSo
+ZS/pZ9ZnipuE0OPPKoLox9ReZ2U78VFUDJu7LfezawtVt6kTqp+F3crqxZuwRdrn
+w1rwEMcS9NlJkS2Dx0z33bwlg5rhW0I/dgpHLH1XQN+XuD0pF2EqwEWfZjnDrzbf
+3216jfnXRwNbd7mORNTo7dehERyxqQbuvCXWgQ++WemXWNExXHtGkQrhFyaxH/j3
+OamTDmT5NXZRQ8kMaE+JlptKSMLu49O6xTmtEQIDAQABAoIBAHoNd1hJlPx5cLoD
+QdnGvnifgLVPIWF9lHnKlaG3qUVmbacgQ8y70cP+OFWnaKtVHLU+ZSQU2waE7ur8
+ZMiHXEkvXRsGtxTk34BQe/WUyE8JVoCAbZYWCGdp5STCd69v/RGVX0Pw3Ircl69U
+DPlVkmndfsncNPcTu+c7A3G6LYSqHEZVtLIV9wmmWFrv0MpUHmJfGIVevYu3P8TM
+10UC/R9hiV+TKYPU3CI8OKI+F5+2BRhP0yCEAcmbUIJrpw2NdnMtIqElgQuoxgP+
+ntRKNrO0c/gvGRQA7jbVGb8BB1R5D5W7c2IiWIUz5JtnuR96UDgJRbJkk+b7uEu1
+53in5YECgYEA834w7sPIE/lahDjr1RzXqx/0SMMJMx/+p7WU21Wpb+NwbY9KOfYa
+04LeGfaysDNg1Zto4OFRe2iy52oCNhaixLrYYJ6lG6pU69hOPH8Rc1LMbkjumHpH
+acOmVSKa1EjPpOqCsS6u9jmLd6V44TAryRw6pLCdDwpzPY3DgnSwiaUCgYEA3twO
+hIhSDTXHnKxZs6qgynHZ/nk+1vcWo4EDOLJMvvSc1iX3Nfvj7AcTyfkf63gBcDt/
+jM1u9myOPFj8vXDMFQbXbOns4CLR2xydwh7X2qWjs5+j4Xy6EQdAnUhEDAJGhYOz
+ifQJktk3OKA9/ZGOSTJmpI+9Y2FfmWf8OfPYAf0CgYEArwPrJBNxQnoeh59qU5oR
+opyrN4mImUjL/7vSrPybdyLhcr5ludedXJ5aCgt6UI/9cEvuTIVnze5peVCHGl2W
+zRUH5hrhzkrWE1c8lNs4rc27xyGA7fQmVG0ep17iLufO6Fjva2+ErtKZ3nv/sMyx
+DDLQLAQOP/tg7cNx3dkF80kCgYEAxs3pyYLOJ2ilU/dP4f3BiDb+L4s7aoprUJpD
+JG2yFtqhmkut9yNoVGKP3an2NpkMN3FsPE/6v6thSyZa+CfKdqtuu4MGQ3/sUxl5
+BfV7u1nt6cvsZrdcSNp+YpBX25qgDHTLUbI4ZB6Pq10PT8dr9ZIXjI+JdEEmBfSE
+RbJoLIUCgYBRSq3NJUA26oT0vMJa4vHnUIRWjYMNBulDkfIpX+L5FiI1g+o1DvQA
+a6XdpH9kE3hU+brxc4rbJeyDPnT7NwR6mg9Ek/eXgFR48wG+emfVVhZncVqs0BHE
++C/8rTC2dV6KXi8FnukICL1zKU8r0yGrOYG/1SbLbhe3Ox3gKcQqNA==
+-----END RSA PRIVATE KEY-----]()
+
+
+
+
+
+
 
