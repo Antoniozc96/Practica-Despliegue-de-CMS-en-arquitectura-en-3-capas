@@ -7,7 +7,8 @@
 2. [Objetivos](#objetivos)
 3. [Requisitos](#requisitos)
 4. [Pasos de la configuración](#pasos-de-la-configuración)
-5. [Aprovisionamientos](#aprovisionamientos)
+5. [Wordpress](#requisitos)
+6. [Aprovisionamientos](#aprovisionamientos)
 
 ## Introducción
 En esta tarea, implementaremos una arquitectura LAMP para WordPress dividida en tres capas. En la primera capa, un balanceador de carga distribuirá el tráfico entre dos servidores backend en la segunda capa, donde se ejecutarán Apache y PHP conectados a un servidor NFS para el almacenamiento compartido. Por último, en la tercera capa, un servidor MySQL gestionará la base de datos, garantizando un diseño escalable, redundante y eficiente.
