@@ -52,6 +52,7 @@ Este paso inicial es crucial para establecer una red eficiente y segura, asegura
 
 * Verificamos que la VPC y sus subredes se han creado correctamente.
 ![vpc 4](https://github.com/user-attachments/assets/eac91753-1798-4d81-932f-5f8392e5095f)
+
 ![vpc 5](https://github.com/user-attachments/assets/2fd38885-4a6c-4fbd-98f2-2bddb5b557ac)
 
 ### Creación de las instancias.
@@ -71,14 +72,20 @@ Finalmente, creamos un grupo de seguridad para la instancia, especificando las r
 
 # Creación instancia Balanceador
 ![instancia1](https://github.com/user-attachments/assets/1c66dc7a-aa02-4c69-866a-391cfeea1c2b)
+
 ![instancia2](https://github.com/user-attachments/assets/61961769-5b45-44a5-9245-de470be69a5e)
+
 ![instancia3](https://github.com/user-attachments/assets/eead9855-1c79-42c0-b27b-e3386d916ade)
+
 ![instancia4](https://github.com/user-attachments/assets/04a452e3-9649-454a-9f6c-dfbc5a843934)
+
 ![instancia5](https://github.com/user-attachments/assets/6060229b-f9c0-4ce3-adb3-7dda007b3e85)
 
 # Creación de la instancia Server 1 y Server 2
 ![instanciaSer1](https://github.com/user-attachments/assets/2a0c4734-9c06-4880-9e0f-c2b44d76696d)
+
 ![instanciaSer2](https://github.com/user-attachments/assets/7c380dd1-b845-4d81-a263-4ab01c1f2984)
+
 ![instanciaSer3](https://github.com/user-attachments/assets/9cb7be7f-62be-493e-8479-4fd2cf59b146)
 
 # Grupos de seguridad
@@ -275,20 +282,26 @@ EOF
 * Ponemos la dirección pública de la instancia Balanceador en el buscador para comprobar que se conecta con Wordpress.
 
 ![WORDPRESS 1](https://github.com/user-attachments/assets/edc0bc4b-162f-4e71-af45-67e35f248da8)
+
 ![WORDPRESS 2](https://github.com/user-attachments/assets/59c0ec1b-0940-4229-8f2e-dd59cbb3522a)
+
 ![WORDPRESS 3](https://github.com/user-attachments/assets/6c7db645-c228-4e4f-837a-693cd0648937)
 
 * A continuación, procederemos correcta instalación de Wordpress.
 ![WORDPRESS 4](https://github.com/user-attachments/assets/ae86698f-0994-4410-8a81-da66b71f11b2)
+
 ![WORDPRESS 5](https://github.com/user-attachments/assets/34a2eb92-103a-4040-9f5f-dc8ad5c079cd)
+
 ![WORDPRESS 6](https://github.com/user-attachments/assets/912ce064-d808-4c09-8176-86ab22d5c895)
 
 # WORDPRESS HTTPS
 1. Después de completar la configuración, ahora he creado un dominio y lo he asociado con la dirección pública del balanceador de carga.
 Esto significa que puedes acceder a tu sitio de WordPress de manera segura utilizando HTTPS.
 2. Instalamos Certbot, una vez instalado lo ejecutamos y ponemos las credenciales que nos piden:
-* correo electrónico
-* nombre del dominio
+* Correo electrónico
+* Nombre del dominio
+
 ![Aaasdad](https://github.com/user-attachments/assets/08e73644-6bfa-407a-a486-729f288f7f13)
+
 ![Captura de pantalla 2024-12-05 173443](https://github.com/user-attachments/assets/a8eef011-c579-490d-ae27-d6a862615a90)
 
