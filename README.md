@@ -271,7 +271,7 @@ GRANT ALL PRIVILEGES ON db_wordpress.* TO 'antonio'@'172.50.%';
 FLUSH PRIVILEGES;
 EOF
 ````
-#Wordpress
+# Wordpress
 * Ponemos la dirección pública de la instancia Balanceador en el buscador para comprobar que se conecta con Wordpress.
 
 ![WORDPRESS 1](https://github.com/user-attachments/assets/edc0bc4b-162f-4e71-af45-67e35f248da8)
