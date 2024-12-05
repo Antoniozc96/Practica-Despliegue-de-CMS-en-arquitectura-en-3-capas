@@ -191,7 +191,6 @@ chown -R nobody:nogroup /var/nfs/shared
 ````
 3. Configurar acceso desde los servidores: Agrega entradas al archivo /etc/exports para permitir el acceso al directorio compartido desde las direcciones IP 172.50.130.70 y 172.50.143.215 con permisos de lectura/escritura y sincronización (rw,sync).
 ````
-# Configurar acceso desde los servidores con las nuevas IPs
 sed -i '$a /var/nfs/shared  172.50.130.70(rw,sync,no_subtree_check)' /etc/exports
 sed -i '$a /var/nfs/shared  172.50.143.215(rw,sync,no_subtree_check)' /etc/exports
 ````
@@ -228,7 +227,6 @@ sed -i 's|DocumentRoot .*|DocumentRoot /nfs/shared/wordpress|' /etc/apache2/site
 ````
 4. Configurar permisos del directorio: Añade una sección de configuración al archivo de Apache para establecer los permisos del directorio compartido de NFS.
 ````
-# Configurar permisos del directorio
 sed -i '/<\/VirtualHost>/i \
 <Directory /nfs/shared/wordpress>\
     Options Indexes FollowSymLinks\
