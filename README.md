@@ -42,9 +42,11 @@ Las otras dos subredes serán privadas. Estas subredes estarán conectadas a las
 * Definir el bloque CIDR IPv4 para esta VPC.
 
 Este paso inicial es crucial para establecer una red eficiente y segura, asegurando que los componentes de nuestra arquitectura estén correctamente segregados y accesibles según las necesidades de cada capa.
-
-
-
+![VPC 1](https://github.com/user-attachments/assets/5d204d22-d1e5-448a-981f-df1edea43632)
+![VPC 2](https://github.com/user-attachments/assets/6ab85d86-57ae-4bce-ab6e-4e081ccae2f4)
+![vpc 3](https://github.com/user-attachments/assets/d0bfcebd-ba20-4da8-8dde-6c2b25fa483d)
+![vpc 4](https://github.com/user-attachments/assets/eac91753-1798-4d81-932f-5f8392e5095f)
+![vpc 5](https://github.com/user-attachments/assets/2fd38885-4a6c-4fbd-98f2-2bddb5b557ac)
 
 
 ## Aprovisionamientos
