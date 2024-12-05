@@ -184,10 +184,10 @@ sed -i '$a /var/nfs/shared  172.50.130.70(rw,sync,no_subtree_check)' /etc/export
 sed -i '$a /var/nfs/shared  172.50.143.215(rw,sync,no_subtree_check)' /etc/exports
 ````
 4. Descargar e instalar WordPress:
-   2.1 curl -O https://wordpress.org/latest.zip: Descarga el archivo zip de WordPress desde el sitio oficial.
-   2.2 unzip -o latest.zip -d /var/nfs/shared/: Descomprime el archivo zip descargado en el directorio /var/nfs/shared/.
-   2.3 Chmod 755 -R /var/nfs/shared/: Cambia los permisos de los archivos descomprimidos a 755 para que sean legibles y ejecutables.
-   2.4 Chown -R www-data:www-data /var/nfs/shared/:* Cambia el propietario de los archivos descomprimidos a www-data, el usuario del servidor web.
+   *  curl -O https://wordpress.org/latest.zip: Descarga el archivo zip de WordPress desde el sitio oficial.
+   *  unzip -o latest.zip -d /var/nfs/shared/: Descomprime el archivo zip descargado en el directorio /var/nfs/shared/.
+   *  chmod 755 -R /var/nfs/shared/: Cambia los permisos de los archivos descomprimidos a 755 para que sean legibles y ejecutables.
+   *  chown -R www-data:www-data /var/nfs/shared/:* Cambia el propietario de los archivos descomprimidos a www-data, el usuario del servidor web.
 ````
 curl -O https://wordpress.org/latest.zip
 unzip -o latest.zip -d /var/nfs/shared/
