@@ -1,4 +1,4 @@
-# Practica-Despliegue-de-CMS-en-arquitectura-en-3-capas
+![instanciaSer3](https://github.com/user-attachments/assets/47a62273-a3b9-4fae-b830-d4e710d540a5)# Practica-Despliegue-de-CMS-en-arquitectura-en-3-capas
 
 # Antonio Zancada Cáceres
 # Índice
@@ -56,15 +56,67 @@ Este paso inicial es crucial para establecer una red eficiente y segura, asegura
 ![vpc 5](https://github.com/user-attachments/assets/2fd38885-4a6c-4fbd-98f2-2bddb5b557ac)
 
 ### Creación de las instancias.
-Creación de las Instancias
+A continuación, procederemos a crear varias instancias utilizando una AMI de Ubuntu-Server 24.04. Una de estas instancias actuará como balanceador de carga, gestionando las solicitudes provenientes de internet en la primera capa de nuestra arquitectura. Este balanceador dirigirá el tráfico hacia los servidores backend ubicados en la segunda capa, que a su vez estarán conectados al servidor MySQL en la tercera capa de nuestra estructura de tres niveles. En este ejemplo, mostraré cómo se configura el balanceador de carga como modelo para todas las instancias, explicando el resultado final esperado y el número de máquinas que deben estar disponibles al finalizar el proceso.
 
-Nosotros creamos las instancias manualmente usando la consola de AWS:
+## Paso 1: Asignación de Nombre y Selección de AMI
+Primero, le damos un nombre a la instancia y seleccionamos la AMI (Amazon Machine Image) que vamos a utilizar.
 
-    Navegamos a EC2 y seleccionamos Lanzar Instancia.
+## Paso 2: Definición del Tipo de Instancia y Creación de Claves SSH
+Luego, definimos el tipo de instancia que utilizaremos y generamos las claves SSH necesarias para acceder a la instancia de forma segura.
 
-    Elegimos la AMI de Ubuntu Server 20.04 LTS.
+## Paso 3: Configuración de la Red
+A continuación, configuramos los parámetros de red, asegurándonos de que la instancia esté correctamente conectada a la red deseada.
 
-    Configuramos el tipo de instancia como 
+## Paso 4: Creación del Grupo de Seguridad para la Instancia
+Finalmente, creamos un grupo de seguridad para la instancia, especificando las reglas de tráfico que controlarán el acceso a la misma.
+
+# Creación instancia Balanceador
+![instancia1](https://github.com/user-attachments/assets/1c66dc7a-aa02-4c69-866a-391cfeea1c2b)
+![instancia2](https://github.com/user-attachments/assets/61961769-5b45-44a5-9245-de470be69a5e)
+![instancia3](https://github.com/user-attachments/assets/eead9855-1c79-42c0-b27b-e3386d916ade)
+![instancia4](https://github.com/user-attachments/assets/04a452e3-9649-454a-9f6c-dfbc5a843934)
+![instancia5](https://github.com/user-attachments/assets/6060229b-f9c0-4ce3-adb3-7dda007b3e85)
+
+# Creación de la instancia Server 1 y Server 2
+![instanciaSer1](https://github.com/user-attachments/assets/2a0c4734-9c06-4880-9e0f-c2b44d76696d)
+![instanciaSer2](https://github.com/user-attachments/assets/7c380dd1-b845-4d81-a263-4ab01c1f2984)
+![instanciaSer3](https://github.com/user-attachments/assets/9cb7be7f-62be-493e-8479-4fd2cf59b146)
+
+# Grupos de seguridad
+
+## Capa 1: Capa pública (Balanceador de carga)
+
+**Grupo de Seguridad del Balanceador de Carga:**
+
+- **Reglas de Ingreso:**
+  - **Puerto 80 (HTTP):** Protocolo TCP desde cualquier lugar (0.0.0.0/0) para permitir tráfico HTTP público.
+  - **Puerto 443 (HTTPS):** Protocolo TCP desde cualquier lugar (0.0.0.0/0) para permitir tráfico HTTPS público.
+
+## Capa 2: Capa privada (Servidores Backend + NFS)
+
+**Grupo de Seguridad de los Servidores Web:**
+
+- **Reglas de Ingreso:**
+  - **Puerto 80 (HTTP):** Protocolo TCP desde el grupo de seguridad del Balanceador de Carga, permitiendo tráfico HTTP desde el balanceador.
+  - **Puerto 2049 (NFS):** Protocolo TCP desde el grupo de seguridad del Servidor NFS, permitiendo comunicación con el servidor NFS.
+
+**Grupo de Seguridad del Servidor NFS:**
+
+- **Reglas de Ingreso:**
+  - **Puerto 2049 (NFS):** Protocolo TCP desde el grupo de seguridad de los Servidores Web, permitiendo compartir archivos con los servidores web.
+
+## Capa 3: Capa privada (Servidor de Base de Datos)
+
+**Grupo de Seguridad del Servidor de Base de Datos:**
+
+- **Reglas de Ingreso:**
+  - **Puerto 3306 (MySQL):** Protocolo TCP desde el grupo de seguridad de los Servidores Web, permitiendo tráfico MySQL desde los servidores web.
+
+## Resumen de las configuraciones
+
+- **Acceso externo restringido** solo a la capa pública.
+- **Impedir conectividad directa** entre las capas 1 y 3.
+- **Protección mediante grupos de seguridad** con reglas específicas para cada capa.
 
 
 ## Aprovisionamientos
