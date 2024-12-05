@@ -21,11 +21,11 @@ Capa 2: Capa privada. Esta capa alojará los servidores backend y un servidor NF
 Capa 3: Capa privada. Aquí se encontrará el servidor de base de datos, que se encargará de gestionar todas las operaciones de base de datos utilizando MySQL o MariaDB.
 
 ## Requisitos
-Cuenta de AWS configurada: Necesitarás una cuenta activa de AWS y configurada para usar los servicios requeridos.
+Cuenta de AWS configurada: Es necesario una cuenta activa de AWS y configurada para usar los servicios requeridos.
 
-CLI de AWS instalado: Debes tener la CLI de AWS instalada y configurada para gestionar tus recursos.
+CLI de AWS instalado: Debemos tener la CLI de AWS instalada y configurada para gestionar nuestros recursos.
 
-Claves SSH: Asegúrate de tener las claves SSH necesarias para acceder a las instancias.
+Claves SSH: Nos aseguramos de tener las claves SSH necesarias para acceder a las instancias.
 
 Conocimientos básicos de Linux: Es fundamental tener conocimientos básicos de comandos de Linux para la instalación y configuración de los servidores.
 
