@@ -1,5 +1,3 @@
-![instanciaSer3](https://github.com/user-attachments/assets/47a62273-a3b9-4fae-b830-d4e710d540a5)# Practica-Despliegue-de-CMS-en-arquitectura-en-3-capas
-
 # Antonio Zancada Cáceres
 # Índice
 
@@ -7,8 +5,8 @@
 2. [Objetivos](#objetivos)
 3. [Requisitos](#requisitos)
 4. [Pasos de la configuración](#pasos-de-la-configuración)
-5. [Wordpress](#requisitos)
-6. [Aprovisionamientos](#aprovisionamientos)
+5. [Aprovisionamientos](#aprovisionamientos)
+6. [Wordpress](#wordpress)
 
 ## Introducción
 En esta tarea, implementaremos una arquitectura LAMP para WordPress dividida en tres capas. En la primera capa, un balanceador de carga distribuirá el tráfico entre dos servidores backend en la segunda capa, donde se ejecutarán Apache y PHP conectados a un servidor NFS para el almacenamiento compartido. Por último, en la tercera capa, un servidor MySQL gestionará la base de datos, garantizando un diseño escalable, redundante y eficiente.
@@ -114,14 +112,20 @@ Finalmente, creamos un grupo de seguridad para la instancia, especificando las r
   - **Puerto 3306 (MySQL):** Protocolo TCP desde el grupo de seguridad de los Servidores Web, permitiendo tráfico MySQL desde los servidores web.
 
 ## Resumen de las configuraciones
-
 - **Acceso externo restringido** solo a la capa pública.
 - **Impedir conectividad directa** entre las capas 1 y 3.
 - **Protección mediante grupos de seguridad** con reglas específicas para cada capa.
 
-
 ## Aprovisionamientos
-Aquí va el contenido de la sección Aprovisionamientos.
+### Aprovisionamiento Balanceador
+````
+Actualizar e instalar Apache
+apt update -y
+apt install -y apache2
+````
+
+
+
 
 
   
