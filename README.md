@@ -1,4 +1,4 @@
-# Antonio Zancada Cáceres
+![WORDPRESS 1](https://github.com/user-attachments/assets/abf2c239-9695-47eb-ae16-41a387ab736d)# Antonio Zancada Cáceres
 # Índice
 
 1. [Introducción](#introducción)
@@ -271,8 +271,19 @@ GRANT ALL PRIVILEGES ON db_wordpress.* TO 'antonio'@'172.50.%';
 FLUSH PRIVILEGES;
 EOF
 ````
+#Wordpress
+* Ponemos la dirección pública de la instancia Balanceador en el buscador para comprobar que se conecta con Wordpress.
 
+![WORDPRESS 1](https://github.com/user-attachments/assets/edc0bc4b-162f-4e71-af45-67e35f248da8)
+![WORDPRESS 2](https://github.com/user-attachments/assets/59c0ec1b-0940-4229-8f2e-dd59cbb3522a)
+![WORDPRESS 3](https://github.com/user-attachments/assets/6c7db645-c228-4e4f-837a-693cd0648937)
 
+* A continuación, procederemos correcta instalación de Wordpress.
+![WORDPRESS 4](https://github.com/user-attachments/assets/ae86698f-0994-4410-8a81-da66b71f11b2)
+![WORDPRESS 5](https://github.com/user-attachments/assets/34a2eb92-103a-4040-9f5f-dc8ad5c079cd)
+![WORDPRESS 6](https://github.com/user-attachments/assets/912ce064-d808-4c09-8176-86ab22d5c895)
 
+* Worpress con HTTPS
+Después de completar la configuración, ahora he creado un dominio y lo he asociado con la dirección pública del balanceador de carga. Esto significa que puedes acceder a tu sitio de WordPress de manera segura utilizando HTTPS.
+![Captura de pantalla 2024-12-05 173443](https://github.com/user-attachments/assets/a8eef011-c579-490d-ae27-d6a862615a90)
 
-  
