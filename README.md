@@ -1,4 +1,4 @@
-![WORDPRESS 1](https://github.com/user-attachments/assets/abf2c239-9695-47eb-ae16-41a387ab736d)# Antonio Zancada Cáceres
+# Antonio Zancada Cáceres
 # Índice
 
 1. [Introducción](#introducción)
