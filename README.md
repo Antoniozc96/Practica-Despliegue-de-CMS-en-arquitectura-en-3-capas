@@ -45,7 +45,7 @@ Este paso inicial es crucial para establecer una red eficiente y segura, asegura
 ### Establecemos un nombre a nuestra nueva VPC y establecer su rango de direcciones IP utilizando el bloque CIDR IPv4.
 ![VPC 1](https://github.com/user-attachments/assets/5d204d22-d1e5-448a-981f-df1edea43632)
 
-### Determinamos la cantidad de zonas de disponibilidad y especificamos el número de subredes tanto públicas como privadas.
+#### Determinamos la cantidad de zonas de disponibilidad y especificamos el número de subredes tanto públicas como privadas.
 ![VPC 2](https://github.com/user-attachments/assets/6ab85d86-57ae-4bce-ab6e-4e081ccae2f4)
 
 ### Le damos "Crear VPC" y esperamos a que el proceso se complete.
