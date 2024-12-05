@@ -31,14 +31,15 @@ Claves SSH: Asegúrate de tener las claves SSH necesarias para acceder a las ins
 Conocimientos básicos de Linux: Es fundamental tener conocimientos básicos de comandos de Linux para la instalación y configuración de los servidores.
 
 ## Pasos de la configuración
-1. Configuración de las VPCs
+### 1. Configuración de las VPCs
 
 En esta práctica que llevaremos a cabo en AWS, es necesario crear una Red Privada Virtual (VPC). Esta VPC constará de tres subredes distintas. La primera subred será de tipo pública y se conectará a una instancia ubicada en la primera capa de nuestra infraestructura, cuyo propósito será actuar como un balanceador de carga.
 Las otras dos subredes serán privadas. Estas subredes estarán conectadas a las instancias en la segunda y tercera capa de nuestra arquitectura, lo que incluye servidores backend, servidores NFS y el servidor de base de datos MySQL.
+
 ### Paso 1: Configuración de la VPC
 
-Asignar un nombre adecuado a la nueva VPC.
-Definir el bloque CIDR IPv4 para esta VPC.
+* Asignar un nombre adecuado a la nueva VPC.
+* Definir el bloque CIDR IPv4 para esta VPC.
 
 Este paso inicial es crucial para establecer una red eficiente y segura, asegurando que los componentes de nuestra arquitectura estén correctamente segregados y accesibles según las necesidades de cada capa.
 
