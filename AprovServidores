@@ -1,0 +1,37 @@
+#!/bin/bash
+# Actualizar e instalar Apache y PHP con módulos necesarios
+apt update -y
+apt install -y apache2 nfs-common php libapache2-mod-php php-mysql php-curl php-gd php-xml php-mbstring php-xmlrpc php-zip php-soap
+
+# Habilitar el módulo rewrite
+a2enmod rewrite
+
+# Configurar el sitio web para que use la carpeta compartida de NFS
+sed -i 's|DocumentRoot .*|DocumentRoot /nfs/shared/wordpress|' /etc/apache2/sites-available/000-default.conf
+
+# Configurar permisos del directorio
+sed -i '/<\/VirtualHost>/i \
+<Directory /nfs/shared/wordpress>\
+	Options Indexes FollowSymLinks\
+	AllowOverride All\
+	Require all granted\
+</Directory>' /etc/apache2/sites-available/000-default.conf
+
+# Crear configuración personalizada
+cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/websv.conf
+
+# Montar la carpeta compartida desde el servidor NFS
+mkdir -p /nfs/shared
+mount 172.50.138.11:/var/nfs/shared /nfs/shared
+
+# Configurar montaje automático en /etc/fstab
+echo "172.50.138.11/var/nfs/shared /nfs/shared nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0" | sudo tee -a /etc/fstab
+mount -a
+
+# Desactivar el sitio por defecto y activar el nuevo sitio
+a2dissite 000-default.conf
+a2ensite websv.conf
+
+# Reiniciar Apache
+systemctl restart apache2
+systemctl reload apache2
