@@ -42,15 +42,19 @@ Las otras dos subredes serán privadas. Estas subredes estarán conectadas a las
 
 Este paso inicial es crucial para establecer una red eficiente y segura, asegurando que los componentes de nuestra arquitectura estén correctamente segregados y accesibles según las necesidades de cada capa.
 * Establecemos un nombre a nuestra nueva VPC y establecer su rango de direcciones IP utilizando el bloque CIDR IPv4.
+
 ![VPC 1](https://github.com/user-attachments/assets/5d204d22-d1e5-448a-981f-df1edea43632)
 
 * Determinamos la cantidad de zonas de disponibilidad y especificamos el número de subredes tanto públicas como privadas.
+
 ![VPC 2](https://github.com/user-attachments/assets/6ab85d86-57ae-4bce-ab6e-4e081ccae2f4)
 
 * Le damos "Crear VPC" y esperamos a que el proceso se complete.
+
 ![vpc 3](https://github.com/user-attachments/assets/d0bfcebd-ba20-4da8-8dde-6c2b25fa483d)
 
 * Verificamos que la VPC y sus subredes se han creado correctamente.
+
 ![vpc 4](https://github.com/user-attachments/assets/eac91753-1798-4d81-932f-5f8392e5095f)
 
 ![vpc 5](https://github.com/user-attachments/assets/2fd38885-4a6c-4fbd-98f2-2bddb5b557ac)
@@ -82,6 +86,7 @@ Finalmente, creamos un grupo de seguridad para la instancia, especificando las r
 ![instancia5](https://github.com/user-attachments/assets/6060229b-f9c0-4ce3-adb3-7dda007b3e85)
 
 # Creación de la instancia Server 1 y Server 2
+
 ![instanciaSer1](https://github.com/user-attachments/assets/2a0c4734-9c06-4880-9e0f-c2b44d76696d)
 
 ![instanciaSer2](https://github.com/user-attachments/assets/7c380dd1-b845-4d81-a263-4ab01c1f2984)
@@ -288,6 +293,7 @@ EOF
 ![WORDPRESS 3](https://github.com/user-attachments/assets/6c7db645-c228-4e4f-837a-693cd0648937)
 
 * A continuación, procederemos correcta instalación de Wordpress.
+
 ![WORDPRESS 4](https://github.com/user-attachments/assets/ae86698f-0994-4410-8a81-da66b71f11b2)
 
 ![WORDPRESS 5](https://github.com/user-attachments/assets/34a2eb92-103a-4040-9f5f-dc8ad5c079cd)
